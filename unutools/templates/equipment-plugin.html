@@ -33,7 +33,7 @@ ev.preventDefault();
 var formData = $('#main-equipment-form').serialize();
 $.ajax({
           type: 'POST',
-          url: '{%url "equipment-app"%}',
+          url: '{%url "unutool-app"%}',
           data: formData,
           success: function(data) {
           
@@ -65,7 +65,7 @@ showEquipmentList();
 
 
 function showEquipmentList(){
-$("#equipment-list-wrapper").load("{%url "equipment-list"%}");
+$("#equipment-list-wrapper").load("{%url "unutool-list"%}");
 }
 
 

@@ -2,7 +2,7 @@
 
 {%if error == 'new' %}
 <script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
-<form id="main-equipment-form" method="post" action="{%url 'equipment-app'%}">
+<form id="main-equipment-form" method="post" action="{%url 'unutool-app'%}">
 {{form.as_p}}
 {{form.captcha}}
 <input type="submit" value="{%trans "Отправить"%}">
@@ -10,7 +10,7 @@
 </form>
 {%elif error %}
 <script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js" ></script>
-<form id="main-equipment-form" method="post" action="{%url 'equipment-app'%}">
+<form id="main-equipment-form" method="post" action="{%url 'unutool-app'%}">
 {{form.as_p}}
 {{form.captcha}}
 <div id="equipment-form-error">{{error}}</div>
