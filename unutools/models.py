@@ -43,7 +43,7 @@ class Application(models.Model):
                               choices=STATUSES, max_length=1,
                               default=STATUSES[0][0])
     equipment = models.ForeignKey(Equipment, null=True,
-                                  verbose_name=_('оборудование'))
+                                  verbose_name=_('Объект'))
     startdate = models.DateField(default=timezone.now(),
                                      verbose_name=_("Начало использования"),
                                      blank=True)
