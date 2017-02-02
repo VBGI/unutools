@@ -7,7 +7,7 @@ from .forms import ApplicationForm
 from django.utils.translation import gettext as _
 
 
-class EquipmentPlugin(CMSPluginBase):
+class UnuToolPlugin(CMSPluginBase):
     model=CMSPlugin
     name = _(u"Форма бронирования УНУ-объектов ")
     render_template="equipment-plugin.html"
@@ -17,4 +17,4 @@ class EquipmentPlugin(CMSPluginBase):
         return context
 
 
-plugin_pool.register_plugin(EquipmentPlugin)
+plugin_pool.register_plugin(UnuToolPlugin)
