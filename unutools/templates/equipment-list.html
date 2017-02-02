@@ -1,0 +1,41 @@
+{%load i18n%}
+{%if objs%}
+<h3>{%trans "Перечень поступивших заявок"%}</h3>
+<table id="equipment-list">
+  <thead>
+    <tr> 
+    	<th>№</th>
+    	<th>Оборудование</th>
+    	<th>Заказчик</th>
+    	<th>Организация</th>
+    	<th>Даты</th>
+    	<th>Статус</th>
+    </tr>
+  </thead>
+  <tbody>
+  {%for item in objs %}
+   {% if forloop.counter|divisibleby:2 %}
+   	<tr class="quipment-list-even-row">
+     <td>{{forloop.counter}}</td>
+     <td>{{item.equipment.name}}</td>
+     <td>{{item.name}}</td>
+     <td>{{item.organization}}</td>
+     <td>{{item.startdate}}&mdash;{{item.enddate}}</td>
+     <td>{{item.get_status_display}}</td>
+   	</tr>
+    {% else %}
+   	<tr class="quipment-list-odd-row">
+     <td>{{forloop.counter}}</td>
+     <td>{{item.equipment.name}}</td>
+     <td>{{item.name}}</td>
+     <td>{{item.organization}}</td>
+     <td>{{item.startdate}}&mdash;{{item.enddate}}</td>
+     <td>{{item.get_status_display}}</td>
+   	</tr>
+    {% endif %}
+   {%endfor%}
+  </tbody>
+</table>
+{%else%}
+<h4>{%trans "Список пуст"%}</h4>
+{%endif%}

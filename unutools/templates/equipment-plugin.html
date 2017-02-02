@@ -1,0 +1,132 @@
+{%load cms_tags sekizai_tags staticfiles%}
+
+{%addtoblock "js"%}
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/i18n/ui.datepicker-ru.js"></script>
+
+
+
+<script type="text/javascript">
+
+var equipmentFormStatus=false;
+
+
+function resetEquipmentForm(){
+$('#main-equipment-form').each(function(){
+    this.reset();
+});
+}
+
+function initEquipmentForm(){
+var startdate = $("#main-equipment-form input[name*=startdate]").val();
+var enddate = $("#main-equipment-form input[name*=enddate]").val();
+$("#main-equipment-form input[name*=enddate]").datepicker({dateFormat: 'yy-mm-dd',
+														   minDate: 0, 
+														   maxDate: "+1Y",
+														   setDate: enddate});
+$("#main-equipment-form input[name*=startdate]").datepicker({dateFormat: 'yy-mm-dd',
+														    minDate: 0, 
+														    maxDate: "+1Y", 
+														    setDate: startdate});
+$("#main-equipment-form" ).submit(function(ev) {
+ev.preventDefault();	
+var formData = $('#main-equipment-form').serialize();
+$.ajax({
+          type: 'POST',
+          url: '{%url "equipment-app"%}',
+          data: formData,
+          success: function(data) {
+          
+            $('#equipment-form-wrapper').html(data);
+            $.each($("#main-equipment-form input[type!=submit]"), function(ind, obj){
+					resizable(obj, 15);
+										});
+			initEquipmentForm();
+			showAllFields();
+          },
+          error:  function(xhr, str){
+	    	     alert('Возникла ошибка: ' + xhr.responseCode);
+          }
+        });
+  
+
+  
+});
+
+}
+
+
+$(document).ready(function () {
+resetEquipmentForm();
+hideAllFields();
+initEquipmentForm();
+showEquipmentList();
+});
+
+
+function showEquipmentList(){
+$("#equipment-list-wrapper").load("{%url "equipment-list"%}");
+}
+
+
+function showAllFields(){
+$("#equipment-form-wrapper p").each(function(ind, obj){
+   $(obj).css('display','inline'); }); 
+   $("#Recap").show();   
+}
+
+function hideAllFields(){
+$("#equipment-form-wrapper p").each(function(ind, obj){
+	if (ind >= 1) {
+   	$(obj).css('display','none'); }
+   	$("#Recap").hide();
+    });
+}
+
+
+
+function resizable (el, factor) {
+  var smint = Number(factor) || 8;
+  function resize() {
+  	var cval = $("#main-equipment-form input[id*=name]").val();
+  	var cwid = $(el).width();
+	if ((el.value.length + 1) * smint < 500){
+		el.style.width = (el.value.length + 1) * smint + 'px';	
+	}
+ if (!equipmentFormStatus&(cval.length > 2)) {
+  showAllFields()
+  equipmentFormStatus=true;
+  };
+
+if (equipmentFormStatus & cval.length<=2){
+  hideAllFields();
+  equipmentFormStatus=false;
+
+ } 
+  
+}
+  	
+  var e = 'keypress, change'.split(',');
+  for (var i in e) el.addEventListener(e[i], resize, false);
+  resize();
+}
+
+$.each($("#main-equipment-form p input[type!=submit]"), function(ind, obj){
+	resizable(obj, 15);
+});
+</script>
+
+{%endaddtoblock%}
+
+{%addtoblock "css"%}
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+{%endaddtoblock%}
+
+<div id="equipment-form-wrapper">
+{% include "equipment-form.html" %}
+</div>
+
+
+<div id="equipment-list-wrapper"></div>
+
+

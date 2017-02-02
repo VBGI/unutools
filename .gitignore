@@ -1,0 +1,11 @@
+tmp
+*.py[oc]
+*.*~
+env
+hh
+project.db
+.project
+.pydevproject
+testprj/media
+.settings
+one

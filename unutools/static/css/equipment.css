@@ -1,0 +1,118 @@
+
+#main-equipment-form > p:first-child{
+display: block;
+} 
+
+#main-equipment-form > p:not(:first-child){
+display: none;
+}
+ 
+ #main-equipment-form p input, textarea, select{
+ display:block;
+ left: 20px;
+ position:relative; 
+ height: 2em;
+ font-size: 14pt;
+ }
+ 
+ #main-equipment-form p input {
+  min-width:200px!important;
+  max-width:99.9!important;
+  transition: width 0.25s;
+ }
+ 
+ #main-equipment-form p input:focus, textarea:focus {
+  background-color: #BBE2BC;
+ }
+ 
+ 
+ #main-equipment-form * textarea {
+  min-height: 6em;
+  min-width: 200px;
+ }
+
+#main-equipment-form input[type=submit] {
+width: 250px;
+height: 40px;
+font-size: 14pt;
+margin-top: 5px;
+}
+ 
+ 
+#main-equipment-form * select {
+  height: 3em;
+  width: 200px; 
+  border-radius: 7px;
+ }
+ 
+#equipment-form-wrapper {
+padding-top: 10px;
+height: 6em;
+width: auto; 
+overflow: hidden;
+display: inline;
+ }
+ 
+
+ 
+#equipment-list th, td {
+text-align: left;
+padding: 3px 5px 3px;
+border-radius: 5px;
+ }
+
+#equipment-list tr.quipment-list-even-row {
+background-color: #D8F1D3;
+ } 
+
+#equipment-list thead tr {
+background-color: #BAD696; 
+}
+ 
+ 
+ 
+#equipment-list tr.quipment-list-odd-row {
+background-color: #BBE2BC;
+ } 
+ 
+
+#equipment-list tr:hover {
+opacity: 0.3
+ }
+ 
+#equipment-renew-page {
+background-color: #EEEEEE;
+padding: 10px;
+width: 200px;
+border-radius: 10px;
+text-align:center;
+}
+
+#equipment-renew-page:hover {
+background-color: #AAAAAA;
+}
+
+
+ #equipment-renew-page:hover{
+cursor:pointer; 
+ }
+
+#equipment-form-error{
+color: red;
+font-weight: bold;
+font-size: 14pt;
+}
+
+p.required:before { content: '* '; color: red; }
+
+ul.errorlist{
+list-style-type:  none;
+color:red;
+
+} 
+
+#equipment-booked-successfully {
+font-size: 14pt;
+margin: 5px;
+}
+ 
