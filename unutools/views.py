@@ -51,7 +51,7 @@ def equipment_list(request):
     objs = Application.objects.filter(enddate__gte=timezone.now()).exclude(status=2).order_by('-created',
                                                                                             'startdate',
                                                                                             'enddate')
-    result = render_to_string('equipment-list.html',
+    result = render_to_string('unutool-list.html',
                               {'objs': objs},
                               context_instance=RequestContext(request)
                               )
@@ -113,7 +113,7 @@ def request_rent(request):
             response_data.update({'error': _(u'Ошибка при заполнении полей формы')})
 
         response_data.update({'form' : form})
-        result = render_to_string('equipment-form.html', response_data,  context_instance=RequestContext(request))
+        result = render_to_string('unutool-form.html', response_data,  context_instance=RequestContext(request))
         gc.collect()
         return HttpResponse(result, content_type="text/plain")
             

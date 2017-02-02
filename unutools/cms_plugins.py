@@ -10,7 +10,7 @@ from django.utils.translation import gettext as _
 class UnuToolPlugin(CMSPluginBase):
     model=CMSPlugin
     name = _(u"Форма бронирования УНУ-объектов ")
-    render_template="equipment-plugin.html"
+    render_template="unutool-plugin.html"
     def render(self, context, instance, placeholder):
         context.update({'form': ApplicationForm(prefix='equipment'),
                         'error': 'new'})
