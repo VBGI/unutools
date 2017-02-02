@@ -5,6 +5,6 @@ from bgi.unutools.views import (request_rent, equipment_list,
 urlpatterns = patterns('',
    url(r'^$', request_rent, name="unutool-app"),
    url(r'^show$', equipment_list, name="unutool-list"),
-   url(r'^del$', delete_rent_app, name="delete_rent_app")
+   url(r'^del$', delete_rent_app, name="delete_unu_app")
 
 )

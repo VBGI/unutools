@@ -57,7 +57,7 @@ def equipment_list(request):
                               )
     return HttpResponse(result, content_type="text/plain")
 
-        
+
 @never_cache
 @csrf_protect
 def request_rent(request):
@@ -72,8 +72,8 @@ def request_rent(request):
             phone = form.cleaned_data['phone']
             content = form.cleaned_data['content']
             equipment = form.cleaned_data['equipment']
-            startdate = form.cleaned_data['startdate'] 
-            enddate = form.cleaned_data['enddate'] 
+            startdate = form.cleaned_data['startdate']
+            enddate = form.cleaned_data['enddate']
             try:
                 equip = Equipment.objects.get(name__icontains=equipment)
                 start_intersect = Application.objects.filter(startdate__lte=startdate,
@@ -100,7 +100,7 @@ def request_rent(request):
                                           application.enddate,
                                           'http://' +\
                                           current_site.domain +\
-                                          reverse('delete_rent_app') +\
+                                          reverse('delete_unu_app') +\
                                           '?unum={}&pk={}'.format(application.unum,
                                                                   application.pk)
                                           ),
@@ -108,7 +108,7 @@ def request_rent(request):
 
             except Equipment.DoesNotExist:
                 response_data.update({'error': _(u'Такого оборудования нет')})
-            
+
         else:
             response_data.update({'error': _(u'Ошибка при заполнении полей формы')})
 
@@ -116,5 +116,5 @@ def request_rent(request):
         result = render_to_string('unutool-form.html', response_data,  context_instance=RequestContext(request))
         gc.collect()
         return HttpResponse(result, content_type="text/plain")
-            
+
 
