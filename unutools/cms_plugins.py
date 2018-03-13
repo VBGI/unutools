@@ -13,7 +13,7 @@ class UnuToolPlugin(CMSPluginBase):
     render_template="unutool-plugin.html"
     def render(self, context, instance, placeholder):
         context.update({'form': ApplicationForm(prefix='equipment'),
-                        'error': 'new'})
+                        'error': ' '})
         return context
 
 

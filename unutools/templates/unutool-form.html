@@ -4,7 +4,6 @@
 <script type="text/javascript" src="//www.google.com/recaptcha/api.js" ></script>
 <form id="main-equipment-form" method="post" action="{%url 'unutool-app'%}">
 {{form.as_p}}
-{{form.captcha}}
 <div id="equipment-form-error">{{error}}</div>
 <input type="submit" value="{%trans "Отправить"%}">
 {%csrf_token%}
