@@ -1,15 +1,7 @@
 {%load i18n%}
 
-{%if error == 'new' %}
-<script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
-<form id="main-equipment-form" method="post" action="{%url 'unutool-app'%}">
-{{form.as_p}}
-{{form.captcha}}
-<input type="submit" value="{%trans "Отправить"%}">
-{%csrf_token%}
-</form>
-{%elif error %}
-<script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js" ></script>
+{%if error %}
+<script type="text/javascript" src="//www.google.com/recaptcha/api.js" ></script>
 <form id="main-equipment-form" method="post" action="{%url 'unutool-app'%}">
 {{form.as_p}}
 {{form.captcha}}

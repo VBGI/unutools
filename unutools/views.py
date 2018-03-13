@@ -48,9 +48,9 @@ def delete_rent_app(request):
 
 @never_cache
 def equipment_list(request):
-    objs = Application.objects.filter(enddate__gte=timezone.now()).exclude(status=2).order_by('-created',
-                                                                                            'startdate',
-                                                                                            'enddate')
+    objs = Application.objects.all().order_by('-created',
+                                              'startdate',
+                                              'enddate')
     result = render_to_string('unutool-list.html',
                               {'objs': objs},
                               context_instance=RequestContext(request)
