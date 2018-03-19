@@ -76,12 +76,7 @@ def request_rent(request):
                                                            enddate__gte=enddate,
                                                            equipment__pk=equip.pk).exclude(status='2').exists()
                 if start_intersect or end_intersect:
-                    extra = _(u'Обращаем Ваше внимание на то, что на данное'
-                              u'время уже подана заявка. \n'
-                              u'Уточните время у куратора уникальной научной установки'
-                              u'или центра коллективного пользования.\n'
-                              u'Контактные данные куратора приводятся на странице:\n'
-                              u'http://botsad.ru/menu/visitors/collections-bgi-feb-ras/')
+                    extra = app_extra
                 else:
                     extra = ''
                 application = Application.objects.create(name=name,
